@@ -1,19 +1,19 @@
 syntax = "proto3";
 
-import "google/protobuf/any.proto";
+import "google/protobuf/any.proto"; //import any type object from google protobuf
 
 package protocol;
 
-option java_package = "org.gsc.entirty"; //Specify the name of the package that generated the Java file
+option java_package = "org.gsc.entirty"; //the package name of the generated files
 
 // Account
 message Account {
-  bytes account_name = 1; // account name
+  bytes account_name = 1;
   // create address
-  bytes address = 3; // like e83fe0c9cd6637158130fae10a4aa1391a70c7f2a0c78d47538aa95dd8af218b
-  int64 balance = 4;
-  map<string, int64> tokens = 6;
-  repeated Authrity auths = 8;
+  bytes address = 3; // the address that contains user address and contract address and so on
+  int64 balance = 4; // balance of the address
+  map<string, int64> tokens = 6; // some kinds of token 
+  repeated Authrity auths = 8; // different auths of each address 
 }
 
 
