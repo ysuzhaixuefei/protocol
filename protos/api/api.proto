@@ -1,8 +1,10 @@
 syntax = "proto3";
 package protocol;
 
-option java_package = "org.gsc.api"; //Specify the name of the package that generated the Java file
-option java_outer_classname = "GrpcAPI"; //Specify the class name of the generated Java file
+option java_package = "org.gsc.api"; //the package name of generated java files
+option java_outer_classname = "GrpcAPI"; //the name of generated file
+
+//wallet api service
 service Wallet {
 
   rpc GetAccount (Account) returns (Account) {
@@ -14,13 +16,13 @@ service Wallet {
 
 
 };
-
-// database api
+// storage api server
 service Database {
-
+  // get the current newest block
   rpc GetNowBlock (EmptyMessage) returns (Block) {
 
   }
+  // get the block  by message of the block
   rpc GetBlockByNum (NumberMessage) returns (Block) {
 
   }
@@ -31,14 +33,15 @@ message BlockReference {
   bytes block_hash = 2;
 }
 
-
+//network api service
 service Network {
 
 };
 
 // the return type
 message Return {
-  bool result = 1;
+  bool result = 1; // return true or false
+  bytes message = 2; //message of return content
 }
 
 message AccountList {
